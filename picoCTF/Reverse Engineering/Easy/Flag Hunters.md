@@ -1,12 +1,13 @@
 # PicoCTF - Flag Hunters
 
-### Challenge Overview
+## Challenge Overview
 **Title:** Flag Hunters  
 **Category:** Reverse Engineering  
 **Difficulty:** Easy  
 **Files Provided:** lyric-reader.py
 
-### Initial Analysis
+## Initial Analysis
+
 The flag is contained in the `secret_intro` string.
 
 ```python
@@ -33,8 +34,11 @@ No puzzle too dark, no challenge too hid.
 Further down in the `reader` function we see a while loop which processes the `song_flag_hunters`.  
 This contains a part with user input from which we will perform our exploit.
 
-### Detailed Analysis
-**While loop**
+
+
+## Detailed Analysis
+
+### While loop
 ```python
   while not finished and line_count < MAX_LINES:
     line_count += 1
@@ -75,7 +79,10 @@ There, `REFRAIN` is switched with a `RETURN <number>` which contains the line nu
 If we can insert our own `RETURN` statement with line number `0`, it will start printing from the `secret_intro` lyrics
 and print the flag.
 
-### Solution
+
+
+## Solution
+
 The user input is embedded into the song's lyrics.
 
 This means that `RETURN 0` as our input, will be processed as part of the lyrics and start from the `secret_intro` and print the flag.
