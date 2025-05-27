@@ -4,7 +4,7 @@
 **Title:** Bit-O-Asm-2  
 **Category:** Reverse Engineering  
 **Difficulty:** Medium  
-**Files Provided:** disassembler-dump0_a.txt
+**Files Provided:** disassembler-dump0_b.txt
 
 ## Disassembly Dump
 ```

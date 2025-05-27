@@ -1,10 +1,10 @@
-# PicoCTF - Bit-O-Asm-2
+# PicoCTF - Bit-O-Asm-3
 
 ## Challenge Overview
-**Title:** Bit-O-Asm-2  
+**Title:** Bit-O-Asm-3  
 **Category:** Reverse Engineering  
 **Difficulty:** Medium  
-**Files Provided:** disassembler-dump0_a.txt
+**Files Provided:** disassembler-dump0_c.txt
 
 ## Disassembly Dump
 ```
