@@ -21,8 +21,8 @@ Each CTF event has its own folder, organized as follows:
 Each writeup typically includes:
 
 - Challenge Name, Category, Difficulty and Files Provided
-- Initial Analysis
-- Detailed Analysis
+- Source Code
+- Analysis
 - Solution
 - Tools Used
 
