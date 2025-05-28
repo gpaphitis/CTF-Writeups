@@ -6,6 +6,10 @@
 **Difficulty:** Medium  
 **Files Provided:** picker-II.py
 
+## Description
+Can you figure out how this program works to get the flag?
+Additional details will be available after launching your challenge instance.
+
 ## Source Code
 ```python
 import sys

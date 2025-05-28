@@ -6,6 +6,9 @@
 **Difficulty:** Medium  
 **Files Provided:** unpackme.py
 
+## Description
+Can you get the flag? Reverse engineer this Python program.
+
 ## Source Code
 ```python
 import base64

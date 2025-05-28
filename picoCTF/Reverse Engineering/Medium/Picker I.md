@@ -6,6 +6,10 @@
 **Difficulty:** Medium  
 **Files Provided:** picker-I.py
 
+## Description
+This service can provide you with a random number, but can it do anything else?
+Additional details will be available after launching your challenge instance.
+
 ## Source Code
 ```python
 import sys
