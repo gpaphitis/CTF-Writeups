@@ -52,11 +52,11 @@ Now I will use `IDA Free` to view the disassembly and `x32dbg` to debug it.
 
 Inspecting the code in graph view of main in `IDA`, I find the debugger detected error output and see two locations that jump to it.  
 One is the result of `IsDebuggerPresent`, the other is the block before it which checks the return value of the routine `sub_4011D0`
-![Img](../../resources/WinAntiDbg0x200/debugger-found.png)
+![Img](resources/debugger-found.png)
 
 Starting from `sub_4011D0`, we see it creates a new process.
 
-![Img](../../resources/WinAntiDbg0x200/create-process.png)
+![Img](resources/create-process.png)
 
 The process started is the one contained in the `CommandLine` variable which takes its value from the `sub_401090` routine.
 
@@ -66,7 +66,7 @@ I see **/file/path/WinAntiDbg0x200 5628**.
 It **spawns** a new process with the same binary and an a number. 
 
 Going back to main in the disassembly, we see this further above :
-![Img](../../resources/WinAntiDbg0x200/mutex.png)
+![Img](resources/mutex.png)
 
 The process creates or opens, if it exists, a **mutex** and locks it, then checks if there is an error with value **183**.  
 183 is equivalent to **ERROR_ALREADY_EXISTS**, which happens when the mutex already exists.
@@ -74,7 +74,7 @@ The process creates or opens, if it exists, a **mutex** and locks it, then check
 So, the parent thread **creates** the mutex, **spawns** a child and when the child tries to create the mutex it sees that it is already **locked** which **diverges** its execution from the parent down the false (left) path.
 
 ### Child Execution Path
-![Img](../../resources/WinAntiDbg0x200/child-path.png)
+![Img](resources/child-path.png)
 
 The child checks if it has an argument (By convention the first argument always exists and is the program name).  
 If it does, then it converts it to an integer using `atoi` and starts **debugging** a process with the given **id**.
@@ -84,7 +84,7 @@ If the debugger is launched successfully, then the child exits with the value **
 
 Going back to routine `sub_401090`, which from now on I will call `launch_debugger`, we see that the parents waits for the child, `WaitForSingleObject` and gets its exit code, `GetExitCodeProcess` compares it with **0xBEEF** and returns **1** if it matches else **0**.
 
-![Img](../../resources/WinAntiDbg0x200/exit-code.png)
+![Img](resources/exit-code.png)
 
 And finally, main checks if `launch_debugger` returns **1**, debugger was launched successfully so it crashes, or **0**, debugger not launched successfully.
 
@@ -97,6 +97,6 @@ To bypass both of these, we have to change the return value of both `launch_debu
 Using a debugger, set a breakpoint after `launch_debugger` and `IsDebuggerPresent` and change the value of eax from **1** to **0** 
 
 ## Tools Used
-- `Detect it Easy (DIE)`
 - `strings`
 - `IDA Free`
+- `x32dbg`
