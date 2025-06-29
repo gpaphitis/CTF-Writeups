@@ -1,0 +1,11 @@
+import "pe"
+
+rule Detect_Suspicious_PE_String
+{
+    strings:
+    $s1 = "elcome" wide ascii
+    $s2 = "WaitFor" wide ascii
+    condition:
+        pe.is_pe and $s1 and $s2
+
+}
