@@ -140,4 +140,4 @@ picoCTF{____REDACTED____}
 
 - Find he handling for option b in `main()`
 - Replace print statement with call to `print_flag()`
-- Run program and enter opiont b
+- Run program and enter option b
